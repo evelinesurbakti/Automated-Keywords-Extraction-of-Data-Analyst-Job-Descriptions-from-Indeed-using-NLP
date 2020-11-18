@@ -1,0 +1,132 @@
+---
+output: html_document
+---
+
+# ***NLP of Data Analyst Job Summary***
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Hi, my name is Eveline Surbakti, currently I have been looking for a job as a Data Analyst. I was a business analyst in the bank and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity from University College Dublin and decided to continue my masters in data and computational science. 
+
+In reviewing various job summaries from LinkedIn, Indeed and Glassdoor; 
+I found myself questioning about: 
+
+>***"what is a data analyst doing?"***
+
+>***"what is the word structure for this job summaries?***
+
+In order to answer these questions, I used natural language processing (NLP) techniques to analyze the terms present in job summary for data analysts. 
+
+This is what I will explain from the start until the end of this project:
+
+0. Set the goal
+
+1. Get and clean the data
+
+2. Exploratory data analysis
+
+3. Build and analyze the models 
+
+4. Test the models
+
+
+## PART 1: Classification of Summaries
+
+```{r, warning = FALSE, message = FALSE}
+# Let's load the packages 
+library(tidyverse) # clean and tidy the data
+library(rvest)     # web scraping 
+library(xml2)      # read the html page
+```
+
+This is the preview of my first indeed page:
+
+![](indeed_summ.JPG)
+
+Okay, here is the section where we should tailoring the url. Since, I am looking for the data analyst position in Ireland, I used ie.indeed and "Data analyst" keyword which gave me this link:<https://ie.indeed.com/jobs?q=Data+Analyst> as my first page result. 
+
+**Step 1.** My first page link
+
+**Step 2.** After installing selector gadget, it will show up on your chrome addins
+
+**Step 3.** Selecting the area that you want
+
+**Step 4.** Copy the ".summary" for your html_nodes
+
+So, I detected the pattern on indeed's link page which is not ended by 1,2,3, ...
+It is the multiplication of 10. Here is the loop code for that condition:
+
+```{r}
+# Specifying the url 
+start <- 10  # where the page starts
+end <- 500   # last page, depends on how many data that you want
+links <- seq(start, end, by = 10) # it will return 10, 20, ... , 500
+```
+
+Alright, we loop the links and now we need to store the result into a dataframe.
+
+```{r}
+# Make an empty dataframe to store the data
+data <- data.frame() 
+
+# Let's loop!
+# we will process the links, one by one, that's why I used seq_along function
+for(i in seq_along(links)) {    
+  Initial_page <- "https://ie.indeed.com/jobs?q=Data+Analyst" # the very first page 
+  url <- paste0(Initial_page, "&start=", links[i]) # construct the url by pasting
+  page <- xml2::read_html(url) # read the html
+  
+  # Sys.sleep pauses R for two seconds to avoid the error message
+  Sys.sleep(2)
+
+  # right-click on page - inspect and you can use CSS Selector addins on Chrome
+  # get the job title
+  job_title <- page %>%
+    rvest::html_nodes("div") %>%
+    rvest::html_nodes(xpath = '//a[@data-tn-element = "jobTitle"]') %>%
+    rvest::html_attr("title")
+
+  # get job location CSS selector
+  job_location <- page %>%
+    rvest::html_nodes('.accessible-contrast-color-location') %>%
+    rvest::html_text() %>%
+    stringi::stri_trim_both()
+
+  # get the company name
+  company_name <- page %>%
+    rvest::html_nodes("span")  %>%
+    rvest::html_nodes(xpath = '//*[@class="company"]')  %>%
+    rvest::html_text() %>%
+    stringi::stri_trim_both() -> company.name
+
+  # get job description CSS selector
+  job_description <- page %>%
+    rvest::html_nodes('.summary') %>%
+    rvest::html_text() %>%
+    stringi::stri_trim_both()
+
+  df <- data.frame(job_title, job_location, company_name, job_description)
+  data <- rbind(data, df)
+}
+```
+
+Next, I only have an interest to find a job in Dublin. 
+
+```{r}
+# New data set 
+df_Dublin <- data %>%
+  dplyr::distinct() %>%
+  dplyr::mutate(city = "Dublin") # add column city = Dublin
+
+# With some cleaning
+df_Dublin$job_description <- gsub("[\r\n]", "", df_Dublin$job_description)
+
+# in case you want to save the dataset into a csv
+# write.csv(df_Dublin,"df_Dublin.csv")
+```
+
+## PART 2: EDA and Visualizations
+
+I will use the a basic NLP technique that constructs features based on term frequencies. I made use of these features to train the classifier given a collection of texts, known as a *corpus*. 
