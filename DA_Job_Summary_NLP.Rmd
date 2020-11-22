@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Hi, my name is Eveline Surbakti, currently I have been looking for a job as a Data Analyst. I was a business analyst in the bank and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity from University College Dublin and decided to continue my masters in data and computational science. 
+I was a business analyst in the bank and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity from University College Dublin and decided to continue my masters in data and computational science. 
 
 In reviewing various job summaries from LinkedIn, Indeed and Glassdoor; 
 I found myself questioning about: 
