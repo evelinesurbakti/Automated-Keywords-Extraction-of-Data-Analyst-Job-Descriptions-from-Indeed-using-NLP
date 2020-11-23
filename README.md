@@ -75,11 +75,9 @@ I applied the GloVe algorithm, into the job summary corpus, examining both unigr
 
 tell more about unigram and bigram(s)
 
-
 ![](./image/WV_OCT.JPG)
 
 ![](./image/wv.JPG)
-
 
 ![](./image/BA_DA.JPG)
 
