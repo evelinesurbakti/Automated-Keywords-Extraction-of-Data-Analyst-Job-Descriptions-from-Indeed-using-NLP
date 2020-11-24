@@ -15,7 +15,7 @@ I found myself questioning about:
 
 >***"what is a data analyst doing?"***
 
->***"what is the KEYWORDS of the job summaries?***
+>***"what are the KEYWORDS of a data analyst job summaries?***
 
 In order to answer these questions, I used natural language processing (NLP) techniques to analyze the keywords in job summary for a data analyst. 
 
@@ -32,10 +32,6 @@ library(rvest)     # web scraping
 library(xml2)      # read the html page
 # ![](indeed_summ.JPG)
 ```
-
-This is the preview of my first indeed page:
-
-Pic1 here
 
 Okay, here is the section where we should tailoring the url. Since, I am looking for the data analyst position in Ireland, I used ie.indeed and "Data analyst" keyword which gave me this link:<https://ie.indeed.com/jobs?q=Data+Analyst> as my first page result. 
 
@@ -178,8 +174,6 @@ plotYearsExp <- function(text){
 plotYearsExp(unlist(df))
 ```
 
-Compare to the October results, 
-# note here
 
 ```{r}
 library(dplyr)
@@ -299,8 +293,6 @@ context <- glove$components
 # final combination 
 complete <- t(main) + context
 ```
-
-tell more about unigram and bigram(s)
 
 ```{r warning = FALSE, message = FALSE}
 colnames(complete)
