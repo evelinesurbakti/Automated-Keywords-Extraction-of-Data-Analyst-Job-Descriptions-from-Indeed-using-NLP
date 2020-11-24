@@ -53,7 +53,7 @@ Now, let's see the top 10 most frequent words from November Data Set:
 
 ![](./image/count10.JPG)
 
-Word "data" on the first place follows by "experience", if we accumulate all words contain "analy" we will have it on the second place. Which make senses since this is a job description for "data analyst" position. We can ignore "will" and we can conclude that based on the frequent words: **to become a data analyst, you should have experience**.
+Word "data" on the first place follows by "experience", if we accumulate all words contain "analys" we will have it on the second place. Which make senses since this is a job description for "data analyst" position. We can ignore "will" and we can conclude that based on the frequent words: **to become a data analyst, you should have experience**.
 
 Let's take a look about the company. Based on the data, the top three companies are recruitment agencies in Ireland. 
 The companies listed below have many job listings with word "data" in it. 
@@ -79,11 +79,11 @@ The example of unigram is "analyst" while the example of bigram is "data_analyst
 
 This is the job summary corpus based on October data set. 
 
-![](./image/oct.jpg)
+![](./image/WVOCT.JPG)
 
 There are 135 terms and we have more technical terms in the job summary based on November data set compare to the previous data set.
 
-![](./image/nov.jpg)
+![](./image/wv.png)
 
 The plots below show the similarity analysis for both data set. 
 
@@ -95,22 +95,51 @@ The plots below show the similarity analysis for both data set.
 
 Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean distances between these word vectors.  
 
+> Semantic distinction is a function of term frequency. 
+
+GloVe gives a distributed word representation model that learns context iteratively. The synonymous terms in corpora can be easily identified for further analysis. It trains relatively fast on small data set and longer as the data set getting larger or more complex. This techniques uncovers groupings of words into broader subject areas that highlight the inherent disparities of word embeddings.
+
 ![](./image/oct.jpg)
 
 ![](./image/nov.jpg)
 
 ***What we got from the visualization?***
 
-1. 
+We can answer the second question: "what is the KEYWORDS of the job summaries?*
 
-I expected terms close to each other in this reduced vector space to be semantically similar, meaning they are commonly found within the same context and are transposable within the corpus. There are some clear and evident trends from this figure:
+I expected terms close to each other in this reduced vector space to be semantically similar, meaning they are commonly found within the same context and are transposable within the corpus. There are some clear and evident trend from the figures: ***The terms seem to be stratified primarily by frequency.***
 
-1.  The terms seem to be stratified primarily by frequency. 
+Where: 
 - Higher frequency terms are more separated and isolated. These terms be placed within the multidimensional space in a location that depicts its distinct meaning. 
-- Low frequency terms tend to aggregate around each other, often overlapping to show how close they are. These terms cannot be determined as precisely, so their encodings tended to settle closely to each other without much differentiation. 
+- Low frequency terms tend to aggregate around each other, often overlapping to show how close they are. These terms cannot be determined as precisely, so their encodings tended to settle closely to each other without much differentiation. Sometimes we 'could not' find them. 
+
+After further analysis with the distance of terms in MDS figures, I conclude top ten insights. 
+
+1. **business, analyst and business_analyst** are important as a data analyst, (sometimes) as a driver of business, a data analyst should understand about the business analysis.
+2. **years, experience and years_experience** are vital in job description of a data analyst. 
+3. **data, analysis, data_analyst and data_analysis** follows by number 4 **analysts, data_analysts and analyst_will*
+5. **SQL** is one of programming language to get data. A *must* have to become a data analyst.
+6. In this part, it is more about data treatment including how to protect it, compliance and security (**integrity, protection, privacy and security**)
+7. **Understanding the requirement** is very important. With no understanding of goals, a data analyst would not be able to solve anything.
+8. Data analyst should be able to handle **complex** and **large** data set. 
+
+For October data set only, we have:
+
+9. Knowledge and throughly understanding aobout **Operation Process** also nice to have. 
+10. Teamwork is important, as we have the **ability** to **support** and **Work** in **team**
+
+For November data set, we have examples of distinct or unique terms such as:
+
+9. **data_sets** and **sets** 
+10.  **source** and **data_sources** (which closer to SQL)
 
 ## Conclusions
 
-> Semantic distinction is a function of term frequency. 
+Based on the Indeed Job Summary Corpus:
 
-GloVe provides a distributed word representation model that learns context iteratively. Terms that are synonymous with each other within corpora can be easily identified and targeted for further analysis. GloVe trains relatively fast on small data set, so I could scale the algorithm to larger corpora that takes advantage of more nuanced job descriptions. MDS can reveal groupings of words into broader subject areas that highlight the inherent disparities of word embeddings. I would look to expand this analysis to peripherally related jobs, like data scientist and data engineer. Possible extensions include topic modeling, document summarization, and possibly, resume matching with prospective job descriptions.  
+>***A data analyst needs 2-3 years of experience***
+
+>***Here is the KEYWORDS: business, analyst, business_analyst, years, experience, years_experience, data, analysis, data_analyst, data_analysis, analysts, data_analysts, analyst_will, SQL, source, data_sources, integrity, protection, privacy, security, understand, requirement, complex, large, data_sets, sets, operation, process
+ability, support, work, team.  ***
+
+I would recommend to extent the analysis to related jobs, like data scientist and data engineer. Possible extensions include topic modeling, or maybe resume matching with prospective job descriptions.
