@@ -2,25 +2,27 @@
 
 ### Introduction 
 
-I was a business analyst in the bank and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity to continue my masters in data and computational science. Then in September, my job-seeking journey started. In reviewing various job descriptions of a data analyst from LinkedIn, Indeed and Glassdoor; 
-I found myself questioning about: 
+I was a business analyst in the bank and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity to continue my masters in data and computational science. Then in September, my job-seeking journey started. In reviewing various job descriptions of a data analyst from LinkedIn, Indeed and Glassdoor; I found myself questioning about: 
+
+>***"how many years of experience that I need?"***
 
 >***"what is a data analyst doing?"***
 
 >***"what is the KEYWORDS of the job summaries?***
 
-In order to answer these questions, I used natural language processing (NLP) techniques to analyze the keywords in job summary for a data analyst. 
+In order to answer these questions, I used natural language processing (NLP) techniques and GloVe Algorithm to analyze the keywords in job summary for a data analyst. 
 
 ### About the Data Set
+We will **get** the datas set from Indeed. I decided to use Indeed because it has a straight-forward structure and it is the best job search website in Ireland.
+
+You can check this link: <https://www.betterteam.com/job-posting-sites-ireland> for 2020 version. 
 
 *How we Get the Data Set from Indeed?*
 
-We will do a simple scrape with rvest.
-
+We will do a simple scrape with rvest library with R. 
 This is the preview of my first indeed page:
 
 ![](./image/indeed_summ.JPG)
-
 
 Okay, here is the section where we should tailoring the url. Since, I am looking for the data analyst position in Ireland, I used ie.indeed and "Data analyst" keyword which gave me this link:<https://ie.indeed.com/jobs?q=Data+Analyst> as my first page result. 
 
@@ -30,25 +32,19 @@ Okay, here is the section where we should tailoring the url. Since, I am looking
 
 **Step 3.** Selecting the area that you want
 
-**Step 4.** Copy the ".summary" for your html_nodes
+**Step 4.** Copy the ".summary" for your html_nodes code.
 
-So, I detected the pattern on indeed's link page which is not ended by 1,2,3, ...
-It is the multiplication of 10. Here is the loop code for that condition:
-
-Next, I only have an interest to find a job in Dublin. Then I subset the data with unique location = Dublin. 
-
+Full technical explanation is inside the R code. In brief, I detected the pattern on indeed's link pages, scraped all of the informations and grouped the data with Dublin location since I have an interest to analyze the job summaries in Dublin, Ireland.
 
 ## Exploratory Data Analysis & Preprocessing
 
-I will use the a basic NLP technique that constructs features based on term frequencies. I made use of these features to train the classifier given a collection of texts, known as a *corpus*. 
+I will use the a basic NLP technique (bag of words) that constructs features based on term/word (I will use both interchangeably) frequencies. I made use of these features to train the classifier given a collection of texts, known as a *corpus*. 
 
-The summary of a job description will list the number of years of experience desired. We will see how the years of experience were distributed in Dublin data set. 
+To answer the first question **"how many years of experience that I need?"**, we will see how the years of experience were distributed in Dublin data set. Most of the time, the summary of a job description will list the number of years of experience desired. I scraped the websites on October and November 2020.
 
 ![](./image/years.JPG)
 
-
-Compare to the October results, 
-# note here
+# note
 
 Here is the count of top 10 most frequent words:
 
