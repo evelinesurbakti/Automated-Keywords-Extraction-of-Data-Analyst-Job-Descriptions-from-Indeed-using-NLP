@@ -42,7 +42,7 @@ I will use the a basic NLP technique (bag of words) that constructs features bas
 
 To answer the first question **"how many years of experience that I need?"**, we will see how the years of experience were distributed in Dublin data set. Most of the time, the summary of a job description will list the number of years of experience desired. I scraped the websites on October and November 2020.
 
-![](./image/years.JPG)
+![](./image/yearsofexperience.JPG)
 
 # note
 
