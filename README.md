@@ -49,10 +49,15 @@ To answer the first question **"how many years of experience that I need?"**, we
 
 From the plots, it is clear that the number of job postings are decreasing since the companies are slowing down by the end of year. But most of data analyst positions need the candidates with two or three years of experience. The distributions of Oct and Nov are both skewed left distributions. 
 
-Now, let's see the top 10 most frequent words:
+Now, let's see the top 10 most frequent words from November Data Set:
 
 ![](./image/count10.JPG)
 
+Word "data" on the first place follows by "experience", if we accumulate all words contain "analy" we will have it on the second place. Which make senses since this is a job description for "data analyst" position. We can ignore "will" and we can conclude that based on the frequent words: **to become a data analyst, you should have experience**.
+
+Let's take a look about the company. Based on the data, the top three companies are recruitment agencies in Ireland. 
+The companies listed below have many job listings with word "data" in it. 
+![](./image/companycount.JPG)
 
 ### Bag of Words Visualization
 
@@ -66,18 +71,19 @@ Before proceeding to classification, I visualized term frequencies and associati
 **Wordcloud of November Data Set**
 ![](./image/wordcloud.gif)
 
-**Data** and **analyst** were the most frequent terms in the overall corpus of both data set. We notice that some of the terms represent stemmed versions of proper English words (i.e. **experi** instead of **experience**). 
-
+**Data** and **analyst** were the most frequent terms in the overall corpus of both data set. We notice that some of the terms represent stemmed versions of proper English words (i.e. **experi** instead of **experience**). We can see a similar visualization of both wordclouds. 
 
 ### Vectorization of Job Summary Corpus using GloVe Algorithm
 The *bag-of-words* approach has a pitfall, it is a quick but dirty scheme to capture the keywords available. It does not always capture the meaning in the appropriate context. That is the main reason that I applied the GloVe algorithm into the job summary corpus, examining both single terms and also pair of consecutive terms (uni and bi-grams). 
 The example of unigram is "analyst" while the example of bigram is "data_analyst". We will explore more about them in this section. 
 
-This is the job summary corpus based on October data set. I want to relate my background which is business analyst with the corpus of data analyst job description. 
+This is the job summary corpus based on October data set. 
 
-![](./image/WVOCT.JPG)
+![](./image/oct.jpg)
 
-![](./image/wv.png)
+There are 135 terms and we have more technical terms in the job summary based on November data set compare to the previous data set.
+
+![](./image/nov.jpg)
 
 The plots below show the similarity analysis for both data set. 
 
@@ -87,23 +93,21 @@ The plots below show the similarity analysis for both data set.
 
 ### Plot GloVe Word Vectors using Multidimensional Scaling
 
-Plot a vector with 100 dimensions would not be informative, thus we use Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean distances between these word vectors.  
-
-EXPLAIN MORE
+Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean distances between these word vectors.  
 
 ![](./image/oct.jpg)
 
 ![](./image/nov.jpg)
 
-EXPLAIN COLORS
+***What we got from the visualization?***
+
+1. 
 
 I expected terms close to each other in this reduced vector space to be semantically similar, meaning they are commonly found within the same context and are transposable within the corpus. There are some clear and evident trends from this figure:
 
 1.  The terms seem to be stratified primarily by frequency. 
 - Higher frequency terms are more separated and isolated. These terms be placed within the multidimensional space in a location that depicts its distinct meaning. 
 - Low frequency terms tend to aggregate around each other, often overlapping to show how close they are. These terms cannot be determined as precisely, so their encodings tended to settle closely to each other without much differentiation. 
-
-EXPLAIN MORE
 
 ## Conclusions
 
