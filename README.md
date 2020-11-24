@@ -9,7 +9,7 @@ I found myself questioning about:
 
 >***"how many years of experience that I need?"***
 
->***"what is the KEYWORDS of the job summaries?***
+>***"what are the KEYWORDS of the job summaries?***
 
 In order to answer these questions, I used natural language processing (NLP) techniques and GloVe Algorithm to analyze the keywords in job summaries/description (I will use both interchangeably) for a data analyst. 
 
@@ -139,7 +139,7 @@ Based on the Indeed Job Summary Corpus:
 
 >***A data analyst needs 2-3 years of experience***
 
->***Here is the KEYWORDS: business, analyst, business_analyst, years, experience, years_experience, data, analysis, data_analyst, data_analysis, analysts, data_analysts, analyst_will, SQL, source, data_sources, integrity, protection, privacy, security, understand, requirement, complex, large, data_sets, sets, operation, process
+>***The KEYWORDS: business, analyst, business_analyst, years, experience, years_experience, data, analysis, data_analyst, data_analysis, analysts, data_analysts, analyst_will, SQL, source, data_sources, integrity, protection, privacy, security, understand, requirement, complex, large, data_sets, sets, operation, process
 ability, support, work, team.  ***
 
 I would recommend to extent the analysis to related jobs, like data scientist and data engineer. Possible extensions include topic modeling, or maybe resume matching with prospective job descriptions.
