@@ -34,7 +34,9 @@ Okay, here is the section where we should tailoring the url. Since, I am looking
 
 **Step 4.** Copy the ".summary" for your html_nodes code.
 
-Full technical explanation is inside the R code. In brief, I detected the pattern on indeed's link pages, scraped all of the informations and grouped the data with Dublin location since I have an interest to analyze the job summaries in Dublin, Ireland.
+Full technical explanation is inside the R code. 
+
+The project in brief, I detected the pattern on indeed's link pages, scraped all of the informations, stored the them onto a data frame and grouped the data with Dublin location since I have an interest to analyze the job summaries in Dublin, Ireland.  I also plotted the years of experience for the numeric values in the scraped job summaries. Finally, I transformed the corpus by removing stopwords, punctuation, and numbers, and converted it to lowercase as the preprocessing process before I applied GloVe Algorithm into the data set. 
 
 ## Exploratory Data Analysis & Preprocessing
 
@@ -46,7 +48,7 @@ To answer the first question **"how many years of experience that I need?"**, we
 
 From the plots, it is clear that the number of job postings are decreasing since the companies are slowing down by the end of year. But most of data analyst positions need the candidates with two or three years of experience. The distributions of Oct and Nov are both skewed left distributions. 
 
-Now, let's us see the count of top 10 most frequent words:
+Now, let's see the top 10 most frequent words:
 
 <p align="center">
 <img src="./image/count10.JPG" width="250" height="200"/>
@@ -56,32 +58,42 @@ Now, let's us see the count of top 10 most frequent words:
 
 Before proceeding to classification, I visualized term frequencies and associations. First, I produced word clouds that depicted the 200 most frequent terms weighted by their frequency.
 
-Oct
+**Wordcloud of October Data Set**
 <p align="center">
 <img src="./image/wordcloudoct.JPG"/>
 </p>
 
-Nov
+**Wordcloud of November Data Set**
 ![](./image/wordcloud.gif)
 
-Some of the terms represent stemmed versions of proper English words (i.e. **experi** instead of **experience**). **Data** and **analyst** were the most frequent terms in the overall corpus. 
+**Data** and **analyst** were the most frequent terms in the overall corpus of both data set. We notice that some of the terms represent stemmed versions of proper English words (i.e. **experi** instead of **experience**). 
 
-I stored the information scraped from Indeed onto a data frame. I also plotted the years of experience for the numeric values in the scraped job summaries to compare against the presampled qualifications corpus from Part 1. Finally, I transformed the corpus by removing stopwords, punctuation, and numbers, and converted it to lowercase. 
 
 ### Vectorization of Job Summary Corpus using GloVe Algorithm
 The *bag-of-words* approach has a pitfall, it is a quick but dirty scheme to capture the keywords available. It does not always capture the meaning in the appropriate context. 
 
-I applied the GloVe algorithm, into the job summary corpus, examining both unigrams (single terms) and bigrams (pair of consecutive terms). 
+I applied the GloVe algorithm, into the job summary corpus, examining both single terms and also pair of consecutive terms (uni and bi-grams). 
+The example of unigram is "analyst" while the example of bigram is "data_analyst". 
 
-tell more about unigram and bigram(s)
+This is the job summary corpus based on October data set. We have more unigrams and bigrams in this list rather than November data set. 
+<p align="center">
+![](./image/WVOCT.JPG)
+</p>
 
-![](./image/WV_OCT.JPG)
+If we take a closer look, we could not find "business_analyst" as we have in the previous 
+<p align="center">
+![](./image/wv.png)
+</p>
 
-![](./image/wv.JPG)
 
-![](./image/BA_DA.JPG)
 
+<p align="center">
 ![](./image/BA_DA_OCT.JPG)
+</p>
+
+<p align="center">
+![](./image/BA_DA.JPG)
+</p>
 
 ### Plot GloVe Word Vectors using Multidimensional Scaling
 
