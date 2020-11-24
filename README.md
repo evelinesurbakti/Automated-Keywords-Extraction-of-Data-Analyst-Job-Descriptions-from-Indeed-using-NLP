@@ -2,7 +2,7 @@
 
 ### Introduction 
 
-I was a business analyst in the bank and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity to continue my masters in data and computational science. Then in September, my job-seeking journey started. In reviewing various job descriptions of a data analyst from LinkedIn, Indeed and Glassdoor; I found myself questioning about: 
+I was a business analyst and I have been thinking about how we can make a better business decision based on the data. In 2019, I had an opportunity to continue my masters in data and computational science. Then in September, my job-seeking journey started. In reviewing various job descriptions of a data analyst from LinkedIn, Indeed and Glassdoor; I found myself questioning about: 
 
 >***"how many years of experience that I need?"***
 
@@ -44,7 +44,7 @@ To answer the first question **"how many years of experience that I need?"**, we
 
 ![](./image/yearsofexperience.JPG)
 
-# note
+From the plots, it is clear that the number of job postings are decreasing since the companies are slowing down by the end of year. But most of data analyst positions need the candidates with two or three years of experience. Both distributions are skewed to the
 
 Here is the count of top 10 most frequent words:
 
