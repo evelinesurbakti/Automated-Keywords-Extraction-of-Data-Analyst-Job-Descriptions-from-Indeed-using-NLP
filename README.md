@@ -77,15 +77,11 @@ This is the job summary corpus based on October data set. I want to relate my ba
 
 ![](./image/WVOCT.JPG)
 
-If we take a closer look, we could not find "business_analyst" as we have in October data set. But in this list, we still have "business". 
-
 ![](./image/wv.png)
 
 The plots below show the similarity analysis for both data set. 
 
 ![](./image/BA_DA_OCT.JPG)
-
-Since we do not have "business_analyst" we will use "business" instead. 
 
 ![](./image/BA_DA.JPG)
 
@@ -95,9 +91,9 @@ Plot a vector with 100 dimensions would not be informative, thus we use Multidim
 
 EXPLAIN MORE
 
-![](./image/MDS_OCT.JPG)
+![](./image/oct.jpg)
 
-![](./image/MDS.JPG)
+![](./image/nov.jpg)
 
 EXPLAIN COLORS
 
