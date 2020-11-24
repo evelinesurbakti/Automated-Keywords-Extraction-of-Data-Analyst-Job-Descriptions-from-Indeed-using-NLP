@@ -42,20 +42,24 @@ I will use the a basic NLP technique (bag of words) that constructs features bas
 
 To answer the first question **"how many years of experience that I need?"**, we will see how the years of experience were distributed in Dublin data set. Most of the time, the summary of a job description will list the number of years of experience desired. I scraped the websites on October and November 2020.
 
-![](./image/yearsofexperience.JPG)
+![](./image/yearsofexp.JPG)
 
-From the plots, it is clear that the number of job postings are decreasing since the companies are slowing down by the end of year. But most of data analyst positions need the candidates with two or three years of experience. Both distributions are skewed to the
+From the plots, it is clear that the number of job postings are decreasing since the companies are slowing down by the end of year. But most of data analyst positions need the candidates with two or three years of experience. The distributions of Oct and Nov are both skewed left distributions. 
 
-Here is the count of top 10 most frequent words:
+Now, let's us see the count of top 10 most frequent words:
 
-![](./image/count10.JPG)
+<p align="center">
+<img src="./image/count10.JPG" width="250" height="200"/>
+</p>
 
 ### Bag of Words Visualization
 
-Before proceeding to classification, I visualized term frequencies and associations. First, I produced word clouds that depicted the 200 most frequent terms weighted by their frequency:
+Before proceeding to classification, I visualized term frequencies and associations. First, I produced word clouds that depicted the 200 most frequent terms weighted by their frequency.
 
-Oct 
-![](./image/wordcloudoct.JPG)
+Oct
+<p align="center">
+<img src="./image/wordcloudoct.JPG"/>
+</p>
 
 Nov
 ![](./image/wordcloud.gif)
