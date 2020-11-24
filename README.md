@@ -50,9 +50,8 @@ From the plots, it is clear that the number of job postings are decreasing since
 
 Now, let's see the top 10 most frequent words:
 
-<p align="center">
-<img src="./image/count10.JPG" width="250" height="200"/>
-</p>
+![](./image/count10.JPG)
+
 
 ### Bag of Words Visualization
 
@@ -76,6 +75,7 @@ I applied the GloVe algorithm, into the job summary corpus, examining both singl
 The example of unigram is "analyst" while the example of bigram is "data_analyst". 
 
 This is the job summary corpus based on October data set. We have more unigrams and bigrams in this list rather than November data set. 
+
 ![](./image/WVOCT.JPG)
 
 If we take a closer look, we could not find "business_analyst" as we have in the previous 
