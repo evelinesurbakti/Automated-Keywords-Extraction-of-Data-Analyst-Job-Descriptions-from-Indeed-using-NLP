@@ -76,24 +76,14 @@ I applied the GloVe algorithm, into the job summary corpus, examining both singl
 The example of unigram is "analyst" while the example of bigram is "data_analyst". 
 
 This is the job summary corpus based on October data set. We have more unigrams and bigrams in this list rather than November data set. 
-<p align="center">
 ![](./image/WVOCT.JPG)
-</p>
 
 If we take a closer look, we could not find "business_analyst" as we have in the previous 
-<p align="center">
 ![](./image/wv.png)
-</p>
 
-
-
-<p align="center">
 ![](./image/BA_DA_OCT.JPG)
-</p>
 
-<p align="center">
 ![](./image/BA_DA.JPG)
-</p>
 
 ### Plot GloVe Word Vectors using Multidimensional Scaling
 
