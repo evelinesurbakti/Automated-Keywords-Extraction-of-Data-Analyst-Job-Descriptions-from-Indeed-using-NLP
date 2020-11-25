@@ -85,7 +85,7 @@ There are 135 terms and we have more technical terms in the job summary based on
 
 ![](./image/wv.png)
 
-I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href="<https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> **Cosine** </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
+I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href="https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md" **Cosine** </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
 
 ![](./image/BA_DA_OCT.JPG)
 
@@ -101,7 +101,7 @@ The first term is **analyst** follow by **sql, maintain, modelling and data**. T
 
 MDS aims to produce a low dimensional representation of the data so that the distances between points in the representation are similar to the dissimilarities between data points. MDS essentially produces a ‘map’ of the observations onto new points that are in a lower dimensional space.
 
-Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with <a href="<https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> Euclidean </a> distances between these word vectors. 
+Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with <a href="https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md" Euclidean </a> distances between these word vectors. 
 
 > Semantic distinction is a function of term frequency. 
 
