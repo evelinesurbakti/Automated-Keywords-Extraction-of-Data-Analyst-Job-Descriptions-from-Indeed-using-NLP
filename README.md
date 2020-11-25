@@ -95,7 +95,7 @@ As we can see
 
 MDS aims to produce a low dimensional representation of the data so that the distances between points in the representation are similar to the dissimilarities between data points. MDS essentially produces a ‘map’ of the observations onto new points that are in a lower dimensional space.
 
-Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean and Cosine distances between these word vectors.  
+Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with <a href="<https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> Euclidean </a>  [] > distances between these word vectors. 
 
 > Semantic distinction is a function of term frequency. 
 
@@ -141,7 +141,6 @@ Based on the Indeed Job Summary Corpus:
 
 >***A data analyst needs 2-3 years of experience***
 
->***The KEYWORDS: business, analyst, business_analyst, years, experience, years_experience, data, analysis, data_analyst, data_analysis, analysts, data_analysts, analyst_will, SQL, source, data_sources, integrity, protection, privacy, security, understand, requirement, complex, large, data_sets, sets, operation, process
-ability, support, work, team.***
+>***The KEYWORDS (not in order of their weight) : business, analyst, business_analyst, years, experience, years_experience, data, analysis, data_analyst, data_analysis, analysts, data_analysts, analyst_will, SQL, source, data_sources, integrity, protection, privacy, security, understand, requirement, complex, large, data_sets, sets, operation, process, ability, support, work, team.***
 
 I would recommend to extent the analysis to related jobs, like data scientist and data engineer. Possible extensions include topic modeling, or maybe resume matching with prospective job descriptions.
