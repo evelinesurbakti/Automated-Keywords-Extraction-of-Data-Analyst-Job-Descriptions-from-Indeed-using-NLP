@@ -49,7 +49,7 @@ It is the multiplication of 10. Here is the loop code for that condition:
 ```{r}
 # Specifying the url 
 start <- 10  # where the page starts
-end <- 50   # last page, depends on how many data that you want
+end <- 500   # last page, depends on how many data that you want
 links <- seq(start, end, by = 10) # it will return 10, 20, ... , 500
 ```
 
@@ -279,7 +279,7 @@ iteration = itoken(df$job_description,
 vocab <- create_vocabulary(iteration, ngram = c(1L, 2L))
 vocab <- prune_vocabulary(vocab,
                           # retain words whose frequencies > 15
-                          term_count_min = 5,
+                          term_count_min = 15,
                           doc_proportion_min = 0.001)
 # Vectorize the vocab
 vectorizer <- vocab_vectorizer(vocab)
@@ -356,7 +356,7 @@ plotSimilarWords("business_analyst","data_analyst",complete)
 MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean distances between these word vectors.  
 
 ```{r warning = FALSE, message = FALSE, fig.height = 10, fig.width = 15}
-# Euclidean distance
+# MDS with Euclidean distance
 set.seed(123)
 vectordata = dist(scale(t(complete)))
 mds.euc <- data.frame(cmdscale(vectordata))
@@ -392,9 +392,9 @@ plotGlove(mds.euc,words,Freq_logtrans,"Euclidean Distance")
 
 
 ```{r}
-# (B) Cosine Distance
+# MDS with Cosine Distance
 set.seed(123)
-cosdata = 1-sim2(t(complete),t(complete),method='cosine',norm='l2')
+cosdata = 1-sim2(t(complete),t(complete),method="cosine",norm = "l2")
 mds.cos <- data.frame(cmdscale(cosdata))
 
 plotGlove(mds.cos,words,Freq_logtrans,"Cosine Distance")
