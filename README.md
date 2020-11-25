@@ -89,7 +89,7 @@ The plots below show the similarity analysis for both data set.
 
 ![](./image/BA_DA_OCT.JPG)
 
-![](./image/BA_DA_NOV.JPG)
+![](./image/BA_DA_NOVE.JPG)
 
 ### Plot GloVe Word Vectors using Multidimensional Scaling
 
