@@ -49,7 +49,7 @@ It is the multiplication of 10. Here is the loop code for that condition:
 ```{r}
 # Specifying the url 
 start <- 10  # where the page starts
-end <- 500   # last page, depends on how many data that you want
+end <- 50   # last page, depends on how many data that you want
 links <- seq(start, end, by = 10) # it will return 10, 20, ... , 500
 ```
 
@@ -279,7 +279,7 @@ iteration = itoken(df$job_description,
 vocab <- create_vocabulary(iteration, ngram = c(1L, 2L))
 vocab <- prune_vocabulary(vocab,
                           # retain words whose frequencies > 15
-                          term_count_min = 15,
+                          term_count_min = 5,
                           doc_proportion_min = 0.001)
 # Vectorize the vocab
 vectorizer <- vocab_vectorizer(vocab)
@@ -387,4 +387,16 @@ plotGlove <- function(mdsout,words,Freq_logtrans,metric){
 }
 
 plotGlove(mds.euc,words,Freq_logtrans,"Euclidean Distance")
+
 ```
+
+
+```{r}
+# (B) Cosine Distance
+set.seed(123)
+cosdata = 1-sim2(t(complete),t(complete),method='cosine',norm='l2')
+mds.cos <- data.frame(cmdscale(cosdata))
+
+plotGlove(mds.cos,words,Freq_logtrans,"Cosine Distance")
+```
+
