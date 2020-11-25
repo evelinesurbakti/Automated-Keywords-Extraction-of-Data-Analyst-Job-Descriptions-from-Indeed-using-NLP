@@ -85,8 +85,7 @@ There are 135 terms and we have more technical terms in the job summary based on
 
 ![](./image/wv.png)
 
-I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used  <a href="<https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> Cosine </a> distance in this analysis. 
-The plot below show the (Cosine) similarity analysis of October data set. 
+I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href="<https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> **Cosine** </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
 
 ![](./image/BA_DA_OCT.JPG)
 
