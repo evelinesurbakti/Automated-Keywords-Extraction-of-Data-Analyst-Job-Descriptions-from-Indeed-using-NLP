@@ -89,11 +89,13 @@ The plots below show the similarity analysis for both data set.
 
 ![](./image/BA_DA_OCT.JPG)
 
-![](./image/BA_DA.JPG)
+![](./image/BA_DA_NOV.JPG)
 
 ### Plot GloVe Word Vectors using Multidimensional Scaling
 
-Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean distances between these word vectors.  
+MDS aims to produce a low dimensional representation of the data so that the distances between points in the representation are similar to the dissimilarities between data points. MDS essentially produces a ‘map’ of the observations onto new points that are in a lower dimensional space.
+
+Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with Euclidean and Cosine distances between these word vectors.  
 
 > Semantic distinction is a function of term frequency. 
 
