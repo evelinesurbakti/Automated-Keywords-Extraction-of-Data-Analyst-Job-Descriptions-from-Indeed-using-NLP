@@ -85,11 +85,11 @@ There are 135 terms and we have more technical terms in the job summary based on
 
 ![](./image/wv.png)
 
-The plots below show the similarity analysis for both data set. 
+The plot below show the (Cosine) similarity analysis of October data set. 
 
 ![](./image/BA_DA_OCT.JPG)
 
-![](./image/BA_DA_NOVE.JPG)
+As we can see
 
 ### Plot GloVe Word Vectors using Multidimensional Scaling
 
