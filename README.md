@@ -64,11 +64,13 @@ The companies listed below have many job listings with word "data" in it.
 Before proceeding to classification, I visualized term frequencies and associations. First, I produced word clouds that depicted the 200 most frequent terms weighted by their frequency.
 
 **Wordcloud of October Data Set**
+
 <p align="center">
 <img src="./image/wordcloudoct.JPG"/>
 </p>
 
 **Wordcloud of November Data Set**
+
 ![](./image/wordcloud.gif)
 
 **Data** and **analyst** were the most frequent terms in the overall corpus of both data set. We notice that some of the terms represent stemmed versions of proper English words (i.e. **experi** instead of **experience**). We can see a similar visualization of both wordclouds. 
@@ -85,7 +87,7 @@ There are 135 terms and we have more technical terms in the job summary based on
 
 ![](./image/wv.png)
 
-I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href= "https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> Cosine </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
+I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href= "https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/blob/main/Euclidean-vs-Cosine.md"> Cosine </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
 
 ![](./image/BA_DA_OCT.JPG)
 
@@ -101,7 +103,7 @@ The first term is **analyst** follow by **sql, maintain, modelling and data**. T
 
 MDS aims to produce a low dimensional representation of the data so that the distances between points in the representation are similar to the dissimilarities between data points. MDS essentially produces a ‘map’ of the observations onto new points that are in a lower dimensional space.
 
-Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with <a href="https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/edit/main/Euclidean-vs-Cosine.md"> Euclidean </a> distances between these word vectors. 
+Plot a vector with 100 dimensions would not be informative, thus we used Multidimensional Scaling (MDS) to ease the interpretation. MDS seeks to preserve the distance between vectors. Since vector distances within GloVe encode some semantic meaning, it would be ideal to preserve the relative term topology. We applied MDS with <a href="https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/blob/main/Euclidean-vs-Cosine.md"> Euclidean </a> distances between these word vectors. 
 
 > Semantic distinction is a function of term frequency. 
 
@@ -144,6 +146,8 @@ For November data set, we have examples of distinct or unique terms such as:
 ## Conclusions
 
 Based on the Indeed Job Summary Corpus:
+
+**Experience and Analysis** are vital keywords in a data analyst job descriptions. 
 
 >***A data analyst needs 2-3 years of experience***
 
