@@ -11,7 +11,12 @@ On the other hand, Euclidean shows a better presentation.
 
 ![](./image/euc.gif)
 
+The meaning of area (in order):
 
+- All job summaries use *data* and *analyst* words
+- Experience is very important
+- The bigger cluster show the various terms to explain more about the job. 
 
+*this is based on the 25 November 2020 Dataset*
 
 
