@@ -40,13 +40,12 @@ if (interactive()) {
                 tabPanel("Word Cloud Corpus",
                          splitLayout(textOutput("corpuscomplete"),
                                      wordcloud2Output("wordcloudfin"))),
-                tabPanel("Years", plotOutput("Similarwords"),
+                tabPanel("Similar Words", plotOutput("Similarwords"),
                          splitLayout()),
-                tabPanel("Years",
-                         splitLayout(plotOutput("glove_cos"),
-                                     plotOutput("glove_euc")))
+                tabPanel("MDS Plot",
+                         plotlyOutput("glove_euc"))
+                ),
             ),
-                          ),
             title = "Dashboard example"
         ),
         server = function(input, output) {
@@ -263,26 +262,26 @@ if (interactive()) {
             plotGlove <- function(mdsout,words,Freq_logtrans,metric){
                 colors = Colors(2)
                 library(ggplot2)
-                ggplot(mdsout, aes(x = X1, y = X2,size=14)) +
-                    geom_label(aes(label = words, fill = Freq_logtrans, fontface = "bold"))+
+                library(plotly)
+                ggplot(mdsout, aes(x = X1, y = X2, size=14, color=Freq_logtrans)) +
+                    geom_label(aes(label = words, fontface = "bold"))+
                     theme_bw()+
                     theme(axis.line = element_line(size=1, colour = "black"),
                           panel.grid.major = element_line(colour = "#d3d3d3"),
                           panel.grid.minor = element_blank(),
                           panel.border = element_blank(), panel.background = element_blank(),
                           plot.title = element_text(family="Arial", size = 18, face = "bold", hjust=0.5),
-                          plot.caption = element_text(family="Arial", size = 12, face ="bold", hjust=0.5),
                           axis.text.x=element_text(colour="black", size = 12),
                           axis.text.y=element_text(colour="black", size = 12),
-                          text=element_text(family="Arial", size = 14))+
-                    guides(size=FALSE)+
-                    scale_fill_gradient(low=colors[2],high=colors[1])+
-                    labs(title=paste("MDS of Word Vectors (", metric, ")",sep=""),
-                         caption="*Based on the Indeed job summary corpus", fill="Frequency")
+                          text=element_text(family="Arial", size = 10))+
+                    guides(size=FALSE)+ geom_point(aes(text=words),size = Freq_logtrans)+
+                    scale_color_gradient(low=colors[2],high=colors[1])+
+                    labs(title=paste("MDS of Word Vectors (", metric, ")",sep=""))
             }
 
-            #Out7
-            output$glove_euc<-renderPlot(plotGlove(mds.euc,words,Freq_logtrans,"Euclidean Distance"))
+            output$glove_euc <- renderPlotly({
+                print(
+                    ggplotly(plotGlove(mds.euc,words,Freq_logtrans,"Euclidean Distance")))})
 
             #Out8
             # MDS with Cosine Distance
@@ -291,7 +290,6 @@ if (interactive()) {
             mds.cos <- data.frame(cmdscale(cosdata))
 
             output$glove_cos<-renderPlot(plotGlove(mds.cos,words,Freq_logtrans,"Cosine Distance"))
-
 
         }
     )
