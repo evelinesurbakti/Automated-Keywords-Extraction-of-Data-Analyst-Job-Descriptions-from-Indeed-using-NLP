@@ -31,6 +31,10 @@ if (interactive()) {
             dashboardHeader(title = "AKEX"),
             dashboardSidebar(numericInput("end", "End", value = 100, min=100, max=1000, step = 100),
                              textInput("Initial_page", "Indeed Link"),
+
+                             textInput("controller", "Controller"),
+                             textAreaInput("inText2", "Input textarea 2"),
+
                              tags$small("you must use apost"), br(),
                              h1("you must use apost")),
             dashboardBody(tabsetPanel(
@@ -41,14 +45,32 @@ if (interactive()) {
                          splitLayout(textOutput("corpuscomplete"),
                                      wordcloud2Output("wordcloudfin"))),
                 tabPanel("Similar Words", plotOutput("Similarwords"),
-                         splitLayout()),
+                         splitLayout(textOutput("x_value"))),
                 tabPanel("MDS Plot",
-                         plotlyOutput("glove_euc"))
-                ),
-            ),
+                         splitLayout(plotlyOutput("glove_euc"), plotOutput("glove_cos")))),
             title = "Dashboard example"
-        ),
-        server = function(input, output) {
+        )),
+        server = function(input, output,session) {
+            observe({
+                # We'll use the input$controller variable multiple times, so save it as x
+                # for convenience.
+                x <- input$controller
+                # Can also set the label, this time for input$inText2
+                updateTextAreaInput(session, "inText2",
+                                    label = paste('"',x,'"'),
+                                    value = paste('"',x,'"'))
+                output$x_value <- renderText(x)
+            })
+
+
+            # start edit here
+
+            start <- 10  # where the page starts
+            end <- 500   # last page, depends on how many data that you want
+            links <- seq(start, end, by = 10) # it will return 10, 20, ... , 500
+
+
+
             library(extrafont)
             df <- read.csv("C:/Users/Eveline/Downloads/Portfolio/job-description-nlp-master/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/df_Dublin.csv")
             library(tm)
@@ -286,10 +308,43 @@ if (interactive()) {
             #Out8
             # MDS with Cosine Distance
             set.seed(123)
+            set.seed(123)
+            vectordata = dist(scale(t(complete)))
+            mds.euc <- data.frame(cmdscale(vectordata))
+
+            # Label each point with corresponding word and color according to frequency
+            words <- colnames(complete)
+            Freq_logtrans <- log10(vocab$term_count)
+
+            plotGloveC <- function(mdsout,words,Freq_logtrans,metric){
+                colors = Colors(2)
+                library(ggplot2)
+                library(plotly)
+                ggplot(mdsout, aes(x = X1, y = X2,size=14)) +
+                    geom_label(aes(label = words, fill = Freq_logtrans, fontface = "bold"))+
+                    theme_bw()+
+                    theme(axis.line = element_line(size=1, colour = "black"),
+                          panel.grid.major = element_line(colour = "#d3d3d3"),
+                          panel.grid.minor = element_blank(),
+                          panel.border = element_blank(), panel.background = element_blank(),
+                          plot.title = element_text(family="Arial", size = 18, face = "bold", hjust=0.5),
+                          plot.caption = element_text(family="Arial", size = 12, face ="bold", hjust=0.5),
+                          axis.text.x=element_text(colour="black", size = 12),
+                          axis.text.y=element_text(colour="black", size = 12),
+                          text=element_text(family="Arial", size = 14))+
+                    guides(size=FALSE)+
+                    scale_fill_gradient(low=colors[2],high=colors[1])+
+                    labs(title=paste("MDS of Word Vectors (", metric, ")",sep=""),
+                         caption="*Based on the Indeed job summary corpus", fill="Frequency")
+            }
+
             cosdata = 1-sim2(t(complete),t(complete),method="cosine",norm = "l2")
             mds.cos <- data.frame(cmdscale(cosdata))
 
-            output$glove_cos<-renderPlot(plotGlove(mds.cos,words,Freq_logtrans,"Cosine Distance"))
+            #Out9
+            output$glove_cos<-renderPlot(plotGloveC(mds.cos,words,Freq_logtrans,"Cosine Distance"))
+
+
 
         }
     )
