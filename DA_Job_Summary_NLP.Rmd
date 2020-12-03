@@ -112,7 +112,7 @@ df_Dublin <- data %>%
 df_Dublin$job_description <- gsub("[\r\n]", "", df_Dublin$job_description)
 
 # in case you want to save the dataset into a csv
-# write.csv(df_Dublin,"df_Dublin.csv")
+write.csv(df_Dublin,"df_Dublin.csv")
 ```
 
 ## Exploratory Data Analysis & Preprocessing
@@ -368,7 +368,8 @@ Freq_logtrans <- log10(vocab$term_count)
 plotGlove <- function(mdsout,words,Freq_logtrans,metric){
   colors = Colors(2)
   library(ggplot2)
-  ggplot(mdsout, aes(x = X1, y = X2,size=14)) +
+  library(plotly)
+  p<-ggplot(mdsout, aes(x = X1, y = X2,size=14)) +
     geom_label(aes(label = words, fill = Freq_logtrans, fontface = "bold"))+
     theme_bw()+
     theme(axis.line = element_line(size=1, colour = "black"),
@@ -384,6 +385,7 @@ plotGlove <- function(mdsout,words,Freq_logtrans,metric){
     scale_fill_gradient(low=colors[2],high=colors[1])+
     labs(title=paste("MDS of Word Vectors (", metric, ")",sep=""),
          caption="*Based on the Indeed job summary corpus", fill="Frequency")
+  ggplotly(p)
 }
 
 plotGlove(mds.euc,words,Freq_logtrans,"Euclidean Distance")
