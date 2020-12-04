@@ -29,12 +29,8 @@ if (interactive()) {
     shinyApp(
         ui = dashboardPage(
             dashboardHeader(title = "AKEX"),
-            dashboardSidebar(numericInput("end", "End", value = 100, min=100, max=1000, step = 100),
+            dashboardSidebar(numericInput("end", "End Page", value = 100, min=100, max=1000, step = 100),
                              textInput("Initial_page", "Indeed Link"),
-
-                             textInput("controller", "Controller"),
-                             textAreaInput("inText2", "Input textarea 2"),
-
                              tags$small("you must use apost"), br(),
                              h1("you must use apost")),
             dashboardBody(tabsetPanel(
@@ -47,32 +43,78 @@ if (interactive()) {
                 tabPanel("Similar Words", plotOutput("Similarwords"),
                          splitLayout(textOutput("x_value"))),
                 tabPanel("MDS Plot",
-                         splitLayout(plotlyOutput("glove_euc"), plotOutput("glove_cos")))),
-            title = "Dashboard example"
-        )),
+                         splitLayout(plotlyOutput("glove_euc"), plotOutput("glove_cos"))))
+                )),
         server = function(input, output,session) {
             observe({
-                # We'll use the input$controller variable multiple times, so save it as x
+
+                # We'll use the input$end variable multiple times, so save it as x
                 # for convenience.
-                x <- input$controller
-                # Can also set the label, this time for input$inText2
-                updateTextAreaInput(session, "inText2",
-                                    label = paste('"',x,'"'),
-                                    value = paste('"',x,'"'))
-                output$x_value <- renderText(x)
+                x <- reactive({input$Initial_page})
+                x1 <- reactive({paste('"',x(),'"')})
+                x2<- reactive({gsub(" ", "", x1(), fixed = TRUE)})
+                output$y <- renderText(x2())
+
+                library(tidyverse) # clean and tidy the data
+                library(rvest)     # web scraping
+                library(xml2)      # read the html page
+
+                # Specifying the url
+                start <- 10  # where the page starts
+                end <- reactive({input$end})   # last page, depends on how many data that you want
+                links <- reactive({seq(start, end(), by = 10)}) # it will return 10, 20, ... , 500
+
+                # Make an empty dataframe to store the data
+                data <- data.frame()
+
+                order<- reactive({seq_along(links())})
+
+                # Let's loop!
+                # we will process the links, one by one, that's why I used seq_along function
+                reactive({for(i in order()) {
+                    Initial_page <- reactive({x2()}) # the very first page
+                    Initial_page <- gsub(" ", "", Initial_page, fixed = TRUE)
+                    url <- paste0(Initial_page, "&start=", links[i]) # construct the url by pasting
+                    page <- xml2::read_html(url) # read the html
+
+                    # Sys.sleep pauses R for two seconds to avoid the error message
+                    Sys.sleep(2)
+
+                    # right-click on page - inspect and you can use CSS Selector addins on Chrome
+                    # get the job title
+                    job_title <- page %>%
+                        rvest::html_nodes("div") %>%
+                        rvest::html_nodes(xpath = '//a[@data-tn-element = "jobTitle"]') %>%
+                        rvest::html_attr("title")
+
+                    # get job location CSS selector
+                    job_location <- page %>%
+                        rvest::html_nodes('.accessible-contrast-color-location') %>%
+                        rvest::html_text() %>%
+                        stringi::stri_trim_both()
+
+                    # get the company name
+                    company_name <- page %>%
+                        rvest::html_nodes("span")  %>%
+                        rvest::html_nodes(xpath = '//*[@class="company"]')  %>%
+                        rvest::html_text() %>%
+                        stringi::stri_trim_both() -> company.name
+
+                    # get job description CSS selector
+                    job_description <- page %>%
+                        rvest::html_nodes('.summary') %>%
+                        rvest::html_text() %>%
+                        stringi::stri_trim_both()
+
+                    df <- reactive({data.frame(job_title, job_location, company_name, job_description)})
+                    data <- rbind(data, df)
+                }})
+
             })
 
 
-            # start edit here
-
-            start <- 10  # where the page starts
-            end <- 500   # last page, depends on how many data that you want
-            links <- seq(start, end, by = 10) # it will return 10, 20, ... , 500
-
-
-
             library(extrafont)
-            df <- read.csv("C:/Users/Eveline/Downloads/Portfolio/job-description-nlp-master/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/df_Dublin.csv")
+            df <- data
             library(tm)
             df$job_description = tolower(df$job_description)
             # remove stop words

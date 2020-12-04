@@ -62,7 +62,7 @@ data <- data.frame()
 # Let's loop!
 # we will process the links, one by one, that's why I used seq_along function
 for(i in seq_along(links)) {    
-  Initial_page <- "https://ie.indeed.com/jobs?q=Data+Analyst" # the very first page 
+  Initial_page <- " https://ie.indeed.com/jobs?q=Data+Analyst " # the very first page 
   url <- paste0(Initial_page, "&start=", links[i]) # construct the url by pasting
   page <- xml2::read_html(url) # read the html
   
