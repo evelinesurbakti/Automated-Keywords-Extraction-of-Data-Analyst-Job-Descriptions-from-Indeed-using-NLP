@@ -1,8 +1,5 @@
 # Load R packages
 library(abind)
-library(arules)
-library(arulesViz)
-library(clustMixType)
 library(dashboardthemes)
 library(dplyr)
 library(GGally)
