@@ -53,7 +53,7 @@ Now, let's see the top 10 most frequent words from November Data Set:
 
 ![](./image/count10.JPG)
 
-`
+```
 Word          n 
 data        909 
 experience  150 
@@ -65,15 +65,15 @@ team         85
 analysts     84
 work         69 
 role         66 
+```
 
-`
 Word "data" on the first place follows by "experience", if we accumulate all words contain "analys" we will have it on the second place. Which make senses since this is a job description for "data analyst" position. We can ignore "will" and we can conclude that based on the frequent words: **to become a data analyst, you should have experience**.
 
 Let's take a look about the company. Based on the data, the top three companies are recruitment agencies in Ireland. 
 The companies listed below have many job listings with word "data" in it. 
 ![](./image/companycount.JPG)
 
-`
+```
 Company Name                    Word         n 
 Morgan McKinley                 data        36 
 Eolas Recruitment               data        25
@@ -85,7 +85,7 @@ Segment                         data        15
 TikTok                          quality     15 
 Red Tree Recruitment            data        14 
 Red Tree Recruitment            recruit     13 
-`
+```
 
 ### Bag of Words Visualization
 
@@ -111,6 +111,7 @@ This is the job summary corpus based on October data set.
 
 ![](./image/WVOCT.JPG)
 
+```
 [1] "analysing"             "drive"                 "sets" 
 [4] "trends"                "analyst will"          "data_analysts" 
 [7] "ensuring"              "experienced"           "maintain" 
@@ -145,12 +146,13 @@ This is the job summary corpus based on October data set.
 [94] "analysts"             "analysis"              "will" 
 [97] "business"             "experience"            "analyst" 
 [100] "data" 
-
+```
 
 There are 135 terms and we have more technical terms in the job summary based on November data set compare to the previous data set.
 
 ![](./image/wv.png)
 
+```
 [1] "building"              "data_integrity"        "data_sets" 
 [4] "datadriven"            "experienced"           "finance" 
 [7] "internal"              "job"                   "manage" 
@@ -196,6 +198,7 @@ There are 135 terms and we have more technical terms in the job summary based on
 [127] "work"                "analysts"              "team" 
 [130] "business"            "will"                  "analysis" 
 [133] "analyst"             "experience"            "data" 
+```
 
 I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href= "https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/blob/main/Euclidean-vs-Cosine.md"> Cosine </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
 
