@@ -51,8 +51,6 @@ From the plots, it is clear that the number of job postings are decreasing since
 
 Now, let's see the top 10 most frequent words from November Data Set:
 
-![](./image/count10.JPG)
-
 ```
 Word          n 
 data        909 
@@ -71,7 +69,6 @@ Word "data" on the first place follows by "experience", if we accumulate all wor
 
 Let's take a look about the company. Based on the data, the top three companies are recruitment agencies in Ireland. 
 The companies listed below have many job listings with word "data" in it. 
-![](./image/companycount.JPG)
 
 ```
 Company Name                    Word         n 
@@ -108,8 +105,6 @@ The *bag-of-words* approach has a pitfall, it is a quick but dirty scheme to cap
 The example of unigram is "analyst" while the example of bigram is "data_analyst". We will explore more about them in this section. 
 
 This is the job summary corpus based on October data set. 
-
-![](./image/WVOCT.JPG)
 
 ```
 [1] "analysing"             "drive"                 "sets" 
@@ -149,8 +144,6 @@ This is the job summary corpus based on October data set.
 ```
 
 There are 135 terms and we have more technical terms in the job summary based on November data set compare to the previous data set.
-
-![](./image/wv.png)
 
 ```
 [1] "building"              "data_integrity"        "data_sets" 
