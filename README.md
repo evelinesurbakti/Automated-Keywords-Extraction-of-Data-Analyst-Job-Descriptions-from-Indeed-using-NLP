@@ -25,6 +25,7 @@ This is the preview of my first indeed page:
 
 ![](./image/indeed_summ.JPG)
 
+
 Okay, here is the section where we should tailoring the url. Since, I am looking for the data analyst position in Ireland, I used ie.indeed and "Data analyst" keyword which gave me this link:<https://ie.indeed.com/jobs?q=Data+Analyst> as my first page result. 
 
 **Step 1.** My first page link
