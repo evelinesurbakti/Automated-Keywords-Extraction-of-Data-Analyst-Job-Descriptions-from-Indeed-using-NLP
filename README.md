@@ -53,11 +53,39 @@ Now, let's see the top 10 most frequent words from November Data Set:
 
 ![](./image/count10.JPG)
 
+`
+Word          n 
+data        909 
+experience  150 
+analyst     133 
+analysis    118 
+will        113 
+business    112 
+team         85   
+analysts     84
+work         69 
+role         66 
+
+`
 Word "data" on the first place follows by "experience", if we accumulate all words contain "analys" we will have it on the second place. Which make senses since this is a job description for "data analyst" position. We can ignore "will" and we can conclude that based on the frequent words: **to become a data analyst, you should have experience**.
 
 Let's take a look about the company. Based on the data, the top three companies are recruitment agencies in Ireland. 
 The companies listed below have many job listings with word "data" in it. 
 ![](./image/companycount.JPG)
+
+`
+Company Name                    Word         n 
+Morgan McKinley                 data        36 
+Eolas Recruitment               data        25
+Accenture                       data        19
+Regeneron                       data        19 
+Reperio Human Capital           data        18 
+Eurofins Central Laboratory     data        17
+Segment                         data        15 
+TikTok                          quality     15 
+Red Tree Recruitment            data        14 
+Red Tree Recruitment            recruit     13 
+`
 
 ### Bag of Words Visualization
 
@@ -83,9 +111,91 @@ This is the job summary corpus based on October data set.
 
 ![](./image/WVOCT.JPG)
 
+[1] "analysing"             "drive"                 "sets" 
+[4] "trends"                "analyst will"          "data_analysts" 
+[7] "ensuring"              "experienced"           "maintain" 
+[10] "manager"              "modelling"             "operations" 
+[13] "privacy"              "projects"              "protection" 
+[16] "related"              "solutions"             "sources" 
+[19] "understand"           "content"               "data_quality" 
+[22] "development"          "dublin"                "product" 
+[25] "required"             "business_analyst"      "internal" 
+[28] "manage"               "use"                   "data_integrity" 
+[31] "experience_data"      "leading"               "process" 
+[34] "teams"                "test"                  "using" 
+[37] "based"                "data_analyst"          "system" 
+[40] "clients"              "customer"              "design" 
+[43] "insights"             "market"                "processes" 
+[46] "responsible"          "security"              "conduct" 
+[49] "join"                 "company"               "global" 
+[52] "new"                  "requirements"          "data_analytics" 
+[55] "provide"              "reports"               "within" 
+[58] "information"          "looking"               "technical" 
+[61] "compliance"           "integrity"             "key" 
+[64] "large"                "risk"                  "tools" 
+[67] "years_experience"     "complex"               "identify" 
+[70] "analytics"            "including"             "sql" 
+[73] "knowledge"            "review"                "systems" 
+[76] "skills"               "understanding"         "financial" 
+[79] "ensure"               "analytical"            "reporting" 
+[82] "working"              "ability"               "years" 
+[85] "data_analysis"        "management"            "strong" 
+[88] "support"              "quality"               "client" 
+[91] "work"                 "role"                  "team" 
+[94] "analysts"             "analysis"              "will" 
+[97] "business"             "experience"            "analyst" 
+[100] "data" 
+
+
 There are 135 terms and we have more technical terms in the job summary based on November data set compare to the previous data set.
 
 ![](./image/wv.png)
+
+[1] "building"              "data_integrity"        "data_sets" 
+[4] "datadriven"            "experienced"           "finance" 
+[7] "internal"              "job"                   "manage" 
+[10] "model"                "performance"           "platform" 
+[13] "providing"            "research"              "results" 
+[16] "tasks"                "across"                "currently" 
+[19] "customer"             "data_quality"          "delivery" 
+[22] "good"                 "issues"                "people" 
+[25] "recruitment"          "testing"               "activities" 
+[28] "analyse"              "business_analyst"      "contract" 
+[31] "high"                 "lead"                  "prepare" 
+[34] "protection"           "relevant"              "sets" 
+[37] "data_analyst"         "develop"               "understand" 
+[40] "data_analysts"        "dublin"                "make" 
+[43] "recruit"              "analyze"               "can" 
+[46] "manager"              "projects"              "using" 
+[49] "clients"              "deliver"               "ensuring" 
+[52] "key"                  "requirements"          "senior" 
+[55] "software"             "use"                   "data_management" 
+[58] "data_sources"         "help"                  "market" 
+[61] "sales"                "conduct"               "drive" 
+[64] "join"                 "related"               "test" 
+[67] "within"               "complex"               "processes" 
+[70] "project"              "required"              "services" 
+[73] "years_experience"     "design"                "ensure" 
+[76] "integrity"            "privacy"               "product" 
+[79] "technical"            "based"                 "identify" 
+[82] "responsible"          "review"                "development" 
+[85] "experience_data"      "looking"               "company" 
+[88] "data_analytics"       "information"           "reports" 
+[91] "risk"                 "new"                   "sql" 
+[94] "system"               "technology"            "tools" 
+[97] "compliance"           "security"              "solutions" 
+[100] "sources"             "including"             "large" 
+[103] "understanding"       "analytical"            "analytics" 
+[106] "insights"            "leading"               "skills" 
+[109] "teams"               "provide"               "process" 
+[112] "years"               "knowledge"             "financial" 
+[115] "global"              "reporting"             "systems" 
+[118] "strong"              "support"               "working" 
+[121] "client"              "data_analysis"         "management" 
+[124] "quality"             "ability"               "role" 
+[127] "work"                "analysts"              "team" 
+[130] "business"            "will"                  "analysis" 
+[133] "analyst"             "experience"            "data" 
 
 I want to know what words have similarity with **Business Analyst** or **Data Analyst**. To find words with highest similarity, I used <a href= "https://github.com/evelinesurbakti/Automated-Keywords-Extraction-of-Data-Analyst-Job-Descriptions-from-Indeed-using-NLP/blob/main/Euclidean-vs-Cosine.md"> Cosine </a> distance in this analysis. The plot below show the **(Cosine)** similarity analysis of October data set. 
 
