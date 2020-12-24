@@ -1,5 +1,7 @@
 # Automated Keywords Extraction of Data Analyst Job Descriptions from Indeed using NLP
 
+Deployed for **Analyst** position: <https://evelinesurbakti.shinyapps.io/application_AKEX/>
+
 ### Introduction 
 
 I was a business analyst and I have been thinking about how we can make a better business decision based on the data. In 2019, I started my masters in data and computational science. Then in September 2020, my job-seeking journey started. 
