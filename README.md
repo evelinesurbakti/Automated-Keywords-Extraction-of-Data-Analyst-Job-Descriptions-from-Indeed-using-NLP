@@ -1,6 +1,6 @@
 # Automated Keywords Extraction of Data Analyst Job Descriptions from Indeed using NLP
 
-Deployed for **Analyst** position: <https://evelinesurbakti.shinyapps.io/application_AKEX/>
+Preview the results for **Analyst** position: <https://youtu.be/VbJmBl8TnUI/>
 
 ### Introduction 
 
